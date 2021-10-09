@@ -22,6 +22,15 @@ public class AddContactPage extends BasePage{
 	@FindBy(how = How.XPATH, using = "//*[@id=\"phone\"]") WebElement PHONE_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"country\"]") WebElement COUNTRY_ELEMENT;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"submit\"]") WebElement SAVE_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"address\"]") WebElement ADDRESS_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"city\"]") WebElement CITY_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"state\"]") WebElement STATE_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"zip\"]") WebElement ZIP_CODE_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//select[@id='tags']") WebElement TAGS_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"group\"]") WebElement GROUP_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"password\"]") WebElement PASSWORD_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"cpassword\"]") WebElement CONFIRM_PASSWORD_ELEMENT;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"rform\"]/div[1]/div[2]/div[5]/div/div/div/label[1]") WebElement TOGGLE_WELCOME_EMAIL_BUTTON_ELEMENT;
 
 	public void verifyContactHeaderPage() {
 
@@ -41,16 +50,62 @@ public class AddContactPage extends BasePage{
 	
 	public void insertEmail(String email) {
 		
-		EMAIL_ELEMENT.sendKeys(generateRandomNo(999) + email);
+		EMAIL_ELEMENT.sendKeys(generateRandomNo(99) + email);
 	}
 
 	public void insertPhone(String phone) {
 		
 		PHONE_ELEMENT.sendKeys(phone + generateRandomNo(999));
 	}
+	
+	public void insertAddress(String address) {
+		
+		ADDRESS_ELEMENT.sendKeys(generateRandomNo(9999) + address);
+	}
+	
+	public void insertCity(String city) {
+		
+		CITY_ELEMENT.sendKeys(city);
+	}
+	
+	public void insertState(String state) {
+		
+		STATE_ELEMENT.sendKeys(state);
+	}
+	
+	public void insertZipCode(String zip) {
+		
+		ZIP_CODE_ELEMENT.sendKeys(zip + generateRandomNo(9999));
+	}
+	
+	public void selectTag(String tag) {
+		
+		selectFromDropdown(TAGS_ELEMENT, tag);
+	}
+	
 	public void selectCountry(String country) {
 		
 		selectFromDropdown(COUNTRY_ELEMENT, country);
+	}
+	
+	public void selectGroup(String group) {
+		
+		selectFromDropdown(GROUP_ELEMENT, group);
+	}
+	
+	public void insertPassword(String password) {
+		
+		PASSWORD_ELEMENT.sendKeys(password);
+	}
+	
+	public void confirmPassword(String confirmPassword) {
+		
+		CONFIRM_PASSWORD_ELEMENT.sendKeys(confirmPassword);
+	}
+	
+	public void clickWelcomeEmailButton() {
+		
+		TOGGLE_WELCOME_EMAIL_BUTTON_ELEMENT.click();
 	}
 	
 	public void saveAddContactResults() {
